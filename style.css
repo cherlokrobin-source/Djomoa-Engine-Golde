@@ -1,0 +1,428 @@
+/* ======================================== */
+/* المتغيرات العامة والثوابت */
+/* ======================================== */
+:root {
+    --gold: #d4af37;
+    --gold-light: #e9c468;
+    --gold-dark: #b57c1c;
+    --gold-glow: rgba(212, 175, 55, 0.6);
+    --bg-dark: #0a0f1e;
+    --bg-card: rgba(12, 18, 30, 0.65);
+    --text-light: #eef3fc;
+    --text-muted: #bdd4f5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ======================================== */
+/* الأنماط الأساسية للصفحة */
+/* ======================================== */
+body {
+    background: radial-gradient(circle at 20% 30%, #0a0f1e, #05070f);
+    font-family: 'Segoe UI', 'Tahoma', 'Amiri', 'Times New Roman', system-ui, -apple-system, sans-serif;
+    color: var(--text-light);
+    line-height: 1.7;
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    border-radius: 2rem;
+    padding: 2.5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 175, 55, 0.2);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    transition: all 0.3s ease;
+}
+
+/* ======================================== */
+/* الأنماط النصية والرؤوس */
+/* ======================================== */
+.basmala {
+    font-size: 2.7rem;
+    font-family: 'Amiri', 'Times New Roman', serif;
+    text-align: center;
+    color: var(--gold-light);
+    text-shadow: 0 0 12px rgba(233, 196, 104, 0.4);
+    margin-bottom: 0.5rem;
+    letter-spacing: 6px;
+}
+
+.basmala br {
+    display: none;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    font-style: italic;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.8rem;
+    font-weight: 400;
+}
+
+.hero-desc {
+    text-align: center;
+    font-size: 1.45rem;
+    font-weight: 600;
+    color: #ffe6b3;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 0.8rem 1.8rem;
+    border-radius: 60px;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    letter-spacing: 0.3px;
+}
+
+.project-title {
+    font-size: 1.9rem;
+    font-weight: 800;
+    text-align: center;
+    color: var(--gold-light);
+    margin: 1rem 0 1.8rem 0;
+    padding-bottom: 0.7rem;
+    border-bottom: 2px solid;
+    border-image: linear-gradient(90deg, transparent, var(--gold-light), var(--gold-dark), transparent) 1;
+    display: inline-block;
+    width: 100%;
+    letter-spacing: -0.3px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* ======================================== */
+/* عداد المزامنة - مع التأثيرات الجديدة */
+/* ======================================== */
+.counter-container {
+    text-align: center;
+    padding: 30px 20px;
+    background: rgba(212, 175, 55, 0.05);
+    border-radius: 20px;
+    margin: 20px 0 30px;
+    border: 1px solid var(--gold);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.counter-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+    animation: rotateGlow 20s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes rotateGlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.counter-container:hover {
+    background: rgba(212, 175, 55, 0.1);
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.15), inset 0 0 40px rgba(212, 175, 55, 0.05);
+    border-color: var(--gold-light);
+    transform: translateY(-2px);
+}
+
+/* ======================================== */
+/* تأثير النبض الذهبي للعداد */
+/* ======================================== */
+@keyframes gold-pulse {
+    0% { 
+        text-shadow: 0 0 10px rgba(212, 175, 55, 0.4), 0 0 20px rgba(212, 175, 55, 0.1);
+    }
+    50% { 
+        text-shadow: 0 0 25px rgba(212, 175, 55, 0.8), 0 0 50px rgba(212, 175, 55, 0.3), 0 0 80px rgba(212, 175, 55, 0.1);
+    }
+    100% { 
+        text-shadow: 0 0 10px rgba(212, 175, 55, 0.4), 0 0 20px rgba(212, 175, 55, 0.1);
+    }
+}
+
+.counter {
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--gold);
+    font-family: 'Courier New', 'SF Mono', monospace;
+    letter-spacing: 4px;
+    display: inline-block;
+    padding: 0.3rem 1.5rem;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    position: relative;
+    z-index: 1;
+    min-width: 250px;
+    animation: gold-pulse 2.5s infinite ease-in-out;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                background 0.3s ease,
+                border-color 0.3s ease;
+}
+
+.counter:hover {
+    transform: scale(1.08) translateY(-3px);
+    cursor: default;
+    background: rgba(0, 0, 0, 0.6);
+    border-color: var(--gold-light);
+}
+
+.counter-container p {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    color: #e6d5a8;
+    position: relative;
+    z-index: 1;
+}
+
+.counter-container small {
+    display: block;
+    margin-top: 10px;
+    color: #a0acd0;
+    font-size: 0.85rem;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 0.5px;
+}
+
+.counter-badge {
+    display: inline-block;
+    background: rgba(212, 175, 55, 0.15);
+    padding: 0.2rem 1.2rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    color: var(--gold-light);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    margin-top: 8px;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 1px;
+}
+
+/* ======================================== */
+/* الأقسام بتصميم نظيف وحديث */
+/* ======================================== */
+.section {
+    background: rgba(8, 12, 22, 0.55);
+    backdrop-filter: blur(4px);
+    border-radius: 1.5rem;
+    padding: 1.3rem 1.8rem;
+    margin-bottom: 1.6rem;
+    border-right: 4px solid var(--gold-light);
+    transition: all 0.25s ease-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.section:hover {
+    background: rgba(18, 28, 45, 0.75);
+    border-right-width: 6px;
+    transform: translateX(-3px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
+}
+
+.section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #f3d988;
+    margin-bottom: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section h2::before {
+    content: "◆";
+    font-size: 0.9rem;
+    color: var(--gold-light);
+    margin-left: 8px;
+}
+
+.section p {
+    color: #e2ebf5;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.section ul {
+    padding-right: 1.5rem;
+    margin-top: 0.3rem;
+    list-style-type: none;
+}
+
+.section li {
+    margin: 0.45rem 0;
+    color: #d9e6fa;
+    position: relative;
+    padding-right: 1.2rem;
+}
+
+.section li::before {
+    content: "▹";
+    color: var(--gold-light);
+    position: absolute;
+    right: 0;
+}
+
+strong {
+    color: #ffdf9c;
+    font-weight: 600;
+}
+
+/* ======================================== */
+/* حالة المحرك */
+/* ======================================== */
+.engine-status {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.8rem;
+    margin: 1rem 0 1.5rem;
+    text-align: center;
+    color: #7a9ab5;
+    font-size: 0.9rem;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transition: all 0.3s ease;
+}
+
+.engine-status.success {
+    color: #7ddf9a;
+    border-color: rgba(125, 223, 154, 0.3);
+}
+
+.engine-status.error {
+    color: #ff6b6b;
+    border-color: rgba(255, 107, 107, 0.3);
+}
+
+/* ======================================== */
+/* التذييل */
+/* ======================================== */
+.footer {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    text-align: center;
+    border-top: 1px solid rgba(233, 196, 104, 0.25);
+}
+
+.copyright {
+    font-size: 0.9rem;
+    color: #bfcfec;
+    letter-spacing: 0.3px;
+    font-weight: 400;
+}
+
+.developed-by {
+    font-size: 0.85rem;
+    color: #e2cf91;
+    margin-top: 0.4rem;
+    font-family: 'SF Mono', 'Courier New', monospace;
+    opacity: 0.9;
+}
+
+.developed-by a {
+    color: #f3d988;
+    text-decoration: none;
+    transition: all 0.2s;
+    border-bottom: 1px solid transparent;
+}
+
+.developed-by a:hover {
+    color: #ffefb9;
+    border-bottom-color: #f3d988;
+}
+
+/* ======================================== */
+/* شريط التمرير المخصص */
+/* ======================================== */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #0f1420;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gold-light);
+}
+
+/* ======================================== */
+/* تحسينات Responsive */
+/* ======================================== */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+    .container {
+        padding: 1.2rem;
+    }
+    .basmala {
+        font-size: 1.9rem;
+        letter-spacing: 2px;
+    }
+    .hero-desc {
+        font-size: 1.1rem;
+        padding: 0.6rem 1rem;
+    }
+    .section {
+        padding: 1rem 1.2rem;
+    }
+    .section h2 {
+        font-size: 1.2rem;
+    }
+    .project-title {
+        font-size: 1.4rem;
+    }
+    .counter {
+        font-size: 2.6rem;
+        letter-spacing: 2px;
+        padding: 0.2rem 1rem;
+        min-width: 180px;
+    }
+    .counter-container {
+        padding: 20px 15px;
+    }
+    .counter-container p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .counter {
+        font-size: 2rem;
+        min-width: 140px;
+        padding: 0.15rem 0.8rem;
+    }
+    .counter-container small {
+        font-size: 0.7rem;
+    }
+    .basmala {
+        font-size: 1.6rem;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+::selection {
+    background: var(--gold);
+    color: #0a0f1e;
+}

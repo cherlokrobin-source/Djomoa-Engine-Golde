@@ -1,0 +1,24 @@
+{
+  "name": "djomoa-engine",
+  "version": "1.1.0",
+  "description": "The Global Chronology Engine for the Djomoa project - High performance vertical and master engine",
+  "main": "monitor.js",
+  "type": "module",
+  "scripts": {
+    "start": "node monitor.js",
+    "test": "node test.js",
+    "run:master": "node Master_Engine.js",
+    "run:vertical": "node golden_calendar.js --view=vertical"
+  },
+  "keywords": [
+    "chronology",
+    "engine",
+    "calendar",
+    "sync",
+    "vertical-view"
+  ],
+  "author": "Engineer from Sidi Bel Abbès",
+  "license": "MIT",
+  "dependencies": {}
+}
+
