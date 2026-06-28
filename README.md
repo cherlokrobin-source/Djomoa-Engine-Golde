@@ -10,6 +10,51 @@
 [https://github.com/cherlokrobin-source/Djomoa-Engine-Golde.git]
 ​نرحب بكل باحث، مبرمج، أو مهتم بالدقة الزمنية للانضمام إلينا في تطوير هذا المحرك. عالمية المشروع تبدأ من مساهماتكم.
 ​#برمجة #ابتكار #تكنولوجيا #DjomoaEngine #سيدي_بلعباس #الجزائر #التقويم_الذهبي #هندسة_البرمجيات #OpenSource #TechInnovation #DualSystem
+## هيكلية محرك Djomoa
+
+```mermaid
+graph TD
+    %% الطبقة الأولى: البيانات والمصادر
+    subgraph Data_Layer [طبقة البيانات والمصادر]
+        RAW[Calendar_1.txt]
+        EPOCHS[data/ epoch_x.json]
+    end
+
+    %% الطبقة الثانية: نواة التشغيل والمنطق
+    subgraph Logic_Layer [طبقة المعالجة والمنطق]
+        MASTER[Master_Engine.js]
+        EPOCH_ENG[epoch_engine.js]
+        EQUATIONS[EQUATIONS_LOGIC.txt]
+        CTRL[master_controller.js]
+    end
+
+    %% الطبقة الثالثة: شبكة المحركات المتوازية
+    subgraph Processing_Layer [شبكة المحركات الفرعية]
+        ENG_2[engine_02.js]
+        ENG_X[engine_...]
+        ENG_24[engine_24.js]
+    end
+
+    %% الطبقة الرابعة: واجهة المستخدم
+    subgraph UI_Layer [طبقة التفاعل]
+        SEARCH[query.js / search_date.js]
+        VIEW[index.html / script.js]
+    end
+
+    %% العلاقات والتدفق
+    RAW --> MASTER
+    EPOCHS --> EPOCH_ENG
+    MASTER --> CTRL
+    CTRL --> EQUATIONS
+    CTRL --> ENG_2 & ENG_X & ENG_24
+    ENG_2 & ENG_X & ENG_24 --> SEARCH
+    SEARCH --> VIEW
+
+    %% التنسيق
+    style Data_Layer fill:#f9f9f9,stroke:#333
+    style Logic_Layer fill:#e1f5fe,stroke:#0277bd
+    style Processing_Layer fill:#fff3e0,stroke:#ef6c00
+    style UI_Layer fill:#e8f5e9,stroke:#2e7d32
 
 
 حقوق الطبع محفوظة@1448
