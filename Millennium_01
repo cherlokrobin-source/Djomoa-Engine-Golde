@@ -1,0 +1,38 @@
+import fs from 'fs';
+import path from 'path';
+
+// ... (باقي كلاس ChronosEngine يبقى كما هو) ...
+
+    exportMillennium(startYear, endYear) {
+        const folderName = `Millennium_${String(startYear).padStart(4, '0')}`;
+        
+        if (!fs.existsSync(folderName)) {
+            fs.mkdirSync(folderName);
+        }
+
+        console.log(`بدء توليد الألفية في المجلد: ${folderName}`);
+        
+        for (let y = startYear; y <= endYear; y++) {
+            const fileName = `GoldCalendar_${y}.txt`;
+            const filePath = path.join(folderName, fileName);
+            
+            // توليد المحتوى
+            const daysInYear = this.getDaysInYear(y);
+            let content = `الرزمانة الذهبية - السنة ${y} (شمسي)\n`;
+            content += `نوع السنة: ${this.isLeap(y) ? "كبيسة" : "بسيطة"}\n\n`;
+
+            for (let day = 1; day <= daysInYear; day++) {
+                const totalDays = this.calculateTotalDaysUpTo(y, day);
+                const totalLunarDays = totalDays * this.LUNAR_RATIO;
+                const hYear = Math.floor(totalLunarDays / this.LUNAR_YEAR_DAYS) + 1;
+                const mIdx = Math.floor((totalLunarDays % this.LUNAR_YEAR_DAYS) / 29.53);
+                const dIdx = Math.floor((totalLunarDays % this.LUNAR_YEAR_DAYS) % 29.53) + 1;
+                
+                content += `يوم ${day} | هجري: ${dIdx} ${this.hijriMonths[mIdx % 12]} ${hYear} هـ\n`;
+            }
+
+            fs.writeFileSync(filePath, content);
+        }
+        console.log(`اكتملت الألفية بنجاح! تم إنشاء 1000 ملف في ${folderName}`);
+    }
+

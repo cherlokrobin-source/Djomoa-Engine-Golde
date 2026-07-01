@@ -1,0 +1,20 @@
+const fs = require('fs'); // لاستخدام نظام الملفات في Node.js
+
+// ... (نفس الكلاس السابق، أضف هذه الدالة داخله) ...
+
+    exportYearData(year) {
+        let content = `تقويم السنة الشمسية: ${year}\n`;
+        content += "---------------------------------\n";
+        
+        const daysInYear = this.getDaysInYear(year);
+        
+        for (let day = 1; day <= daysInYear; day++) {
+            // سنفترض هنا أننا نحتاج دالة بسيطة تحسب اليوم انطلاقاً من بداية السنة
+            // للتبسيط في هذا المثال سنعرض منطقاً للتصدير:
+            content += `اليوم: ${day} | التاريخ القمري: (محاكاة القمري)\n`;
+        }
+
+        fs.writeFileSync(`Calendar_${year}.txt`, content);
+        console.log(`تم تصدير تقويم السنة ${year} بنجاح إلى الملف: Calendar_${year}.txt`);
+    }
+

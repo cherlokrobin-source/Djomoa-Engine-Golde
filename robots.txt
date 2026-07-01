@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://cherlokrobin-source.github.io/Djomoa/sitemap.xml
+
